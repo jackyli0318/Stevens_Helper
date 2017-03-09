@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stevens Helper</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">{{ b.name }}</li>
+        </ol>
+    </div>
+    <div class="col-xs-10 col-md-10">
+        <form class="form-horizontal" action="/posts/list/{{ b.id }}/new_post.html" method="post">{% csrf_token %}
+            {% for field in form %}
+              {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger" role="alert">{{ field.label }}: {{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" name="title" class="form-control" id="title"
+                           placeholder="Title" value="{{ form.title.value }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="content" class="col-sm-2 control-label">Content</label>
+                <div class="col-sm-10">
+                    <textarea rows="8" name="content" class="form-control" id="content"
+                              placeholder="Content">{{ form.content.value }}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Publish</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
