@@ -35,6 +35,35 @@
         </div>
 
     </div>
+
+    <form id="Myform">
+        <input type="password" class="form-control" name="password" id="password">
+        <input type="password" class="form-control" name="cfmPassword" id="cfmPassword" >
+        <script>
+
+            $("#Myform").validate({
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 10,
+
+                    },
+
+                    cfmPassword: {
+
+                        equalTo: "#password",
+                        minlength: 6,
+                        maxlength: 10
+                    }
+
+
+                }
+
+            });
+        </script>
+    </form>
+
 </div>
 </body>
 </html>

@@ -10,6 +10,7 @@ class Reply(models.Model):
     author = models.ForeignKey(User, verbose_name="Author")
     author_name = models.CharField('Author Name', max_length=100)
     content = models.CharField("Content", max_length=10000)
+    to_reply = models.ForeignKey("self", null=True, blank=True, verbose_name="Comment Reply")
     status = models.IntegerField("Status", choices=((1, "exist"), (0, "deleted")), default=1)
     create_timestamp = models.DateTimeField("Created Timestamp", auto_now_add=True)
     update_timestamp = models.DateTimeField("Last Update Timestamp", auto_now=True)

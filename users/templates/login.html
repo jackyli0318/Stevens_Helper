@@ -10,10 +10,16 @@
 {% block content %}
 <div class="row">
     <div class="col-xs-12 col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-primary">
-                <h3 class="panel-title">Login</h3>
-            </div>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a>Login</a></li>
+        </ol>
+    </div>
+    <div class="col-xs-12 col-md-12">
+        <div class="panel">
+            <!--<div class="panel-heading">-->
+                <!--<a style="font-size: 16px">Login</a>-->
+            <!--</div>-->
             <div class="panel-body">
                 <form class="form-horizontal" action="/users/login" method="post">{% csrf_token %}
 
@@ -41,24 +47,24 @@
 
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group col-sm-10">Email</span>
+                            <span class="input-group-addon" style="width: 2.5cm">Email</span>
                             <input type="text" name="email" id="email" class="form-control" placeholder="Email"
-                                   aria-describedby="Email" value="{{ form.email.value }}">
-                            <span class="input-group-addon">@stevens.edu</span>
+                                   aria-describedby="Email" value="{{ form.email.value }}" style="width: 14cm">
+                            <span class="input-group-addon" style="width: 4cm">@stevens.edu</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="input-group col-sm-10">
-                            <span class="input-group-addon">Password</span>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 2.5cm">Password</span>
                             <input type="password" class="form-control" name="password" id="password"
-                                   placeholder="Password" aria-describedby="Password">
+                                   placeholder="Password" aria-describedby="Password" style="width: 18cm">
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-10">
                             <button type="submit" class="btn btn-success">Login</button>
                         </div>
                     </div>

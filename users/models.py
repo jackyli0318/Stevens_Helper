@@ -25,7 +25,9 @@ class User(models.Model):
 class UserActive(models.Model):
     user = models.ForeignKey(User, verbose_name='User ID')
     active_code = models.CharField('Active Code', max_length=50)
-    expire_date = models.DateTimeField('Expire date', auto_created=(datetime.today()+timedelta(hours=24)))
+    expire_date = models.CharField('Expire date', max_length=50,
+            auto_created=(datetime.today()+timedelta(days=1)).strftime("%Y-%m-%d"))
+    is_expired = models.BooleanField("Is expired", default=False)
 
     def __str__(self):
         return self.active_code

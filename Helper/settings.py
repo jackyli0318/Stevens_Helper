@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import configparser
 from .secret import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'posts',
     'users',
     'reply',
+    'message',
 ]
 
 MIDDLEWARE = [
@@ -125,9 +127,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "DjangoUeditor/static"),
 )
 
 # Login redirect url
 LOGIN_REDIRECT_URL = '/'
 
+# Media url
+# MEDIA_ROOT = "/static/files/"
+MEDIA_ROOT = "/Users/jackylee/PycharmProjects/Helper_Apr28/static/files/"
+MEDIA_URL = "http://res.stevenshelper.com/"
 
+#load the config.ini
+# config = configparser.ConfigParser()
+# config_path = os.path.join(os.path.dirname(BASE_DIR),
+#                            "conf/config.conf")
+# config.read(config_path)
+# DEBUG = config["default"].getboolean("debug")
+# MEDIA_URL = config["default"]["media_base_url"]

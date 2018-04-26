@@ -20,6 +20,7 @@ from blocks import views
 from users.views import activate
 from reply.views import create_reply
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
@@ -27,5 +28,7 @@ urlpatterns = [
     url(r'^posts/', include('posts.urls')),
     url(r'^users/', include('users.urls')),
     url(r'^activate/(?P<code>\w+)$', activate),
-    url(r'^comment/create/', create_reply)
+    url(r'^comment/create/', create_reply),
+    url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^message/', include('message.urls')),
 ]
